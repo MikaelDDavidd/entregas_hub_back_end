@@ -27,7 +27,8 @@ export async function postNewDelivery(req, res) {
 }
 
 // Função para upload de imagem na VPS
-exports.uploadProductImage = async (req, res, next) => {
+// Função para upload de imagem na VPS
+export const uploadProductImage = async (req, res, next) => {
   const file = req.file;
 
   try {
