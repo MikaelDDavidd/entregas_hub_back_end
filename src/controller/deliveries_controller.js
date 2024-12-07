@@ -40,7 +40,7 @@ export const uploadProductImage = async (req, res, next) => {
       throw new Error("Nenhum arquivo enviado.");
     }
 
-    // Define o diretório na raiz da VPS para armazenar as imagens
+    // Define o diretório na raiz do projeto para armazenar as imagens
     const uploadDir = path.join(__dirname, "../../uploads");
 
     // Verifica se o diretório 'uploads' existe, se não, cria
@@ -66,7 +66,7 @@ export const uploadProductImage = async (req, res, next) => {
 // Função para atualizar uma entrega
 export async function updateNewDelivery(req, res) {
   const id = req.params.id;
-  const filePath = path.join(__dirname, `../../api/uploads/${id}.png`);
+  const filePath = path.join(__dirname, `../../uploads/${id}.png`);
 
   try {
     if (!fs.existsSync(filePath)) {
