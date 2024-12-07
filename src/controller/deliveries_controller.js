@@ -1,5 +1,6 @@
 import fs from "fs";
 import path from "path";
+import { fileURLToPath } from "url";
 import { getAllDeliveries, createDelivery, updateDelivery } from "../models/deliveries_model.js";
 import createError from "http-errors";
 
@@ -25,6 +26,10 @@ export async function postNewDelivery(req, res) {
     res.status(500).json({ Error: "Falha na requisição" });
   }
 }
+
+// Calcula o diretório onde o arquivo atual está localizado
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Função para upload de imagem no VPS
 export const uploadProductImage = async (req, res, next) => {
