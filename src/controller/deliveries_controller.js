@@ -26,7 +26,7 @@ export async function postNewDelivery(req, res) {
   }
 }
 
-// Função para upload de imagem na VPS
+// Função para upload de imagem no VPS
 export const uploadProductImage = async (req, res, next) => {
   const file = req.file;
 
@@ -35,9 +35,9 @@ export const uploadProductImage = async (req, res, next) => {
       throw new Error("Nenhum arquivo enviado.");
     }
 
-    // Define o diretório para armazenar as imagens
-    const uploadDir = path.join(__dirname, "../uploads");
-    
+    // Define o diretório na raiz da VPS para armazenar as imagens
+    const uploadDir = path.join(__dirname, "../../uploads");
+
     // Verifica se o diretório 'uploads' existe, se não, cria
     if (!fs.existsSync(uploadDir)) {
       fs.mkdirSync(uploadDir, { recursive: true });
@@ -61,7 +61,7 @@ export const uploadProductImage = async (req, res, next) => {
 // Função para atualizar uma entrega
 export async function updateNewDelivery(req, res) {
   const id = req.params.id;
-  const filePath = path.join(__dirname, `../api/uploads/${id}.png`);
+  const filePath = path.join(__dirname, `../../api/uploads/${id}.png`);
 
   try {
     if (!fs.existsSync(filePath)) {
@@ -75,7 +75,7 @@ export async function updateNewDelivery(req, res) {
       destination: destName,
       trackingCode: "",
       creationDate: "",
-      imgUrl: `http://mikaeldavid.online/api/uploads/${id}.png`,
+      imgUrl: `http://mikaeldavid.online/uploads/${id}.png`,
       alt: "",
     };
 
