@@ -36,7 +36,7 @@ export const uploadProductImage = async (req, res, next) => {
     }
 
     // Retorna a URL pública do arquivo com o nome aleatório
-    const imageUrl = `http://localhost:3000/uploads/${file.filename}`;
+    const imageUrl = `http://mikaeldavid.online/api/uploads/${file.filename}`;
     res.status(200).json({ url: imageUrl });
   } catch (error) {
     console.error("Erro ao salvar a imagem:", error);
@@ -47,7 +47,7 @@ export const uploadProductImage = async (req, res, next) => {
 // Função para atualizar uma entrega
 export async function updateNewDelivery(req, res) {
   const id = req.params.id;
-  const filePath = path.join(__dirname, `../uploads/${id}.png`);
+  const filePath = path.join(__dirname, `../api/uploads/${id}.png`);
 
   try {
     if (!fs.existsSync(filePath)) {
@@ -61,7 +61,7 @@ export async function updateNewDelivery(req, res) {
       destination: destName,
       trackingCode: "",
       creationDate: "",
-      imgUrl: `http://191.252.202.88/uploads/${id}.png`,
+      imgUrl: `http://mikaeldavid.online/api/uploads/${id}.png`,
       alt: "",
     };
 
