@@ -49,10 +49,10 @@ const routes = (app) => {
   app.use("/uploads", express.static(path.join(process.cwd(), "uploads")));
 
   // Rotas
-  app.get("/packages", listDeliveries);
-  app.post("/packages", postNewDelivery);
-  app.post("/upload", upload.single("image"), uploadProductImage);
-  app.put("/upload/:id", updateNewDelivery);
+  app.get("/api/packages", listDeliveries);
+  app.post("/api/packages", postNewDelivery);
+  app.post("/api/upload", upload.single("image"), uploadProductImage);
+  app.put("/api/upload/:id", updateNewDelivery);
 };
 
 export default routes;
