@@ -4,14 +4,22 @@ import { fileURLToPath } from "url";
 import { getAllDeliveries, createDelivery, updateDelivery } from "../models/deliveries_model.js";
 import createError from "http-errors";
 
-// Função para listar entregas
+// Função para listar entregas com status e data sem formatação extra
 export async function listDeliveries(req, res) {
   try {
-    const deliveries = await getAllDeliveries();
-    res.status(200).json(deliveries);
+    const deliveries = await getAllDeliveries(); // Obtém todas as entregas do banco de dados
+
+    // Retorna a resposta com o status e os dados diretamente
+    res.status(200).json({
+      status: 200,
+      data: deliveries,
+    });
   } catch (erro) {
     console.error(erro.message);
-    res.status(500).json({ Error: "Erro ao listar entregas" });
+    res.status(500).json({
+      status: 500,
+      error: "Erro ao listar entregas",
+    });
   }
 }
 
